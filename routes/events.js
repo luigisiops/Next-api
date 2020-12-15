@@ -9,7 +9,7 @@ router.post('/calendar/:calendarId/events', async(req, res) => {
     let description = req.body.description
     let start = req.body.start
     let end = req.body.end
-    
+
     if (calendarId) {
         const newEvent = await models.events.create({
             title: title,
@@ -17,6 +17,14 @@ router.post('/calendar/:calendarId/events', async(req, res) => {
             start: start,
             end: end
         })
+
+        let eventId = newEvent.eventId
+        const eventUser = await models.calendarevents.create({
+            calendarId: calendarId,
+            eventId: eventId
+        })
+
+        res.send(newEvent)
     }    
 })
 
