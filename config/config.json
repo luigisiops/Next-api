@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "zwysyahr",
+    "password": "FpDH5uLles9bAoKrEaKuydIbTL6MZfmI",
+    "database": "zwysyahr",
+    "host": "raja.db.elephantsql.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "zwysyahr",
+    "password": "FpDH5uLles9bAoKrEaKuydIbTL6MZfmI",
+    "database": "database_test",
+    "host": "raja.db.elephantsql.com",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "zwysyahr",
+    "password": "FpDH5uLles9bAoKrEaKuydIbTL6MZfmI",
+    "database": "zwysyahr",
+    "host": "raja.db.elephantsql.com",
+    "dialect": "postgres"
+  }
+}
