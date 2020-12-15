@@ -69,4 +69,29 @@ router.get("/:id/users/:userId", async(req, res) => {
     }
 })
 
+router.post('/:calendarId/events', async(req, res) => {
+    let calendarId = req.params.calendarId
+    let title = req.body.title
+    let description = req.body.description
+    let start = req.body.start
+    let end = req.body.end
+
+    if (calendarId) {
+        const newEvent = await models.event.create({
+            title: title,
+            description: description,
+            start: start,
+            end: end
+        })
+
+        let eventId = newEvent.id
+        const eventUser = await models.calendarevents.create({
+            calendarId: calendarId,
+            eventId: eventId
+        })
+
+        res.send(newEvent)
+    }    
+})
+
 module.exports = router
