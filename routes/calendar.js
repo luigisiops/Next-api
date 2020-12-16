@@ -69,6 +69,7 @@ router.get("/:id/users/:userId", async(req, res) => {
     }
 })
 
+//create calendar events
 router.post('/:calendarId/events', async(req, res) => {
     let calendarId = req.params.calendarId
     let title = req.body.title
@@ -112,6 +113,36 @@ router.get('/:calendarId/events', async(req, res) => {
 
         res.send(event)
     }    
+})
+
+router.delete('/:calendarId/events/:eventId', async(req, res) => {
+    let calendarId = req.params.calendarId
+    let eventId = req.params.eventId
+
+    if (eventId) {
+        await models.calendarevents.destroy({
+            where:{
+                eventId: eventId
+            }
+        })
+
+        await models.event.destroy({
+            where:{
+                id: eventId
+            }
+        })
+
+        const events = await models.calendarevents.findAll({
+            where: {calendarId:calendarId}, include:[{
+                model:models.event
+            }]
+        })
+        let event = []
+        let test = events.forEach((item) => {
+            event.push(item.event)
+        })
+        res.send(event)
+        }
 })
 
 module.exports = router
