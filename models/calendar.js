@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //models.calendar.hasMany(models.event, {onDelete: 'cascade', hooks:true})
+      //models.calendar.hasMany(models.calendaruser, {onDelete: 'cascade', hooks:true})
+
     }
   };
   calendar.init({

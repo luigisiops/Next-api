@@ -25,8 +25,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/auth', authRouter)
 app.use("/calendar", calendarRouter)
 
+/*
 io.on('connection', (socket) => {
-    console.log('a user has connected')
+    //console.log('a user has connected')
     socket.emit("your Id", socket.id);
     socket.on("send message" , (body) => {
         io.emit("message", body)
@@ -35,7 +36,8 @@ io.on('connection', (socket) => {
         console.log('user disconnected')
     } )
 })
+*/
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`)
 })

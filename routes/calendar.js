@@ -85,12 +85,32 @@ router.post('/:calendarId/events', async(req, res) => {
         })
 
         let eventId = newEvent.id
+        console.log(eventId)
         const eventUser = await models.calendarevents.create({
             calendarId: calendarId,
             eventId: eventId
         })
 
         res.send(newEvent)
+    }    
+})
+
+router.get('/:calendarId/events', async(req, res) => {
+    let calendarId = req.params.calendarId
+
+    if (calendarId) {
+        const events = await models.calendarevents.findAll({
+            where: {calendarId:calendarId}, include:[{
+                model:models.event
+            }]
+        })
+        let event = []
+        let test = events.forEach((item) => {
+            event.push(item.event)
+        })
+        console.log(event)
+
+        res.send(event)
     }    
 })
 

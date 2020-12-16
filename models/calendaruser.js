@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //models.calendaruser.belongsTo(models.user)
+      //models.calendaruser.belongsTo(models.calendar)
     }
   };
   calendaruser.init({
