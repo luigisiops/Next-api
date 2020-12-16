@@ -17,14 +17,15 @@ const authRouter = require("./routes/auth")
 
 
 const PORT = process.env.PORT || 8000
+app.get('foo', (req,res) => {
+    res.json({message: 'hello world'})
+})
 
 app.use(express.json())
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/auth', authRouter)
 app.use("/calendar", calendarRouter)
-
 /*
 io.on('connection', (socket) => {
     //console.log('a user has connected')
