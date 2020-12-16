@@ -16,7 +16,7 @@ const calendarRouter = require("./routes/calendar")
 const authRouter = require("./routes/auth")
 
 
-const PORT = 8000
+const PORT = process.env.PORT || 8000
 
 app.use(express.json())
 app.use(cors())
